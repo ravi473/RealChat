@@ -1,21 +1,28 @@
 package com.ea.entity;
 
+import java.util.Set;
+import java.util.concurrent.ConcurrentLinkedDeque;
+
 /**
  * Created by ravikumarpothuganti on 2017-08-15.
  */
 public class Message {
     private int id;
+    //private Set<String> userIdentifier;
+    //private ConcurrentLinkedDeque<String> chatData;
     private String text;
-    private int topicId;
     private String userName;
     private int messageScore;
+    private Topic topic;
 
-    public Message(int id, String userName, int topicId, String text,int messageScore) {
+    public Message(int id, String userName, String text, int messageScore,Topic topic) {
         this.id = id;
+        //this.userIdentifier= userIdentifier;
         this.userName = userName;
-        this.topicId = topicId;
+        //this.chatData = chatData;
         this.text = text;
         this.messageScore = messageScore;
+        this.topic=topic;
     }
 
     public Message() {
@@ -37,14 +44,6 @@ public class Message {
         this.text = text;
     }
 
-    public int getTopicId() {
-        return topicId;
-    }
-
-    public void setTopicId(int topicId) {
-        this.topicId = topicId;
-    }
-
     public String getUserName() {
         return userName;
     }
@@ -61,14 +60,22 @@ public class Message {
         this.messageScore = messageScore;
     }
 
+    public Topic getTopic() {
+        return topic;
+    }
+
+    public void setTopic(Topic topic) {
+        this.topic = topic;
+    }
+
     @Override
     public String toString() {
         return "Message{" +
                 "id=" + id +
                 ", text='" + text + '\'' +
-                ", topicId=" + topicId +
-                ", userName='" + userName + '\'' +
+                ", userFirstName='" + userName + '\'' +
                 ", messageScore=" + messageScore +
+                ", topic=" + topic +
                 '}';
     }
 }
